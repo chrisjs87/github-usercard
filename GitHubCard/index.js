@@ -6,6 +6,8 @@ import axios from "axios";
     https://api.github.com/users/<your name>
 */
 
+// axios.get("https://api.github.com/users/chrisjs87");
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -18,6 +20,8 @@ import axios from "axios";
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+
+axios.get("https://api.github.com/users/chrisjs87");
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
@@ -51,6 +55,36 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function cardMaker(obj) {
+  const card = document.createElement("div");
+  const profilePicture = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const name = document.createElement("h3");
+  const userName = document.createElement("p");
+  const location = document.createElement("p");
+  const profileLinkP = document.createElement("p");
+  const profileLink = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  card.classList.add("card");
+  cardInfo.classList.add("card-info");
+  name.classList.add("name");
+  userName.classList.add("username");
+
+  profilePicture.src = obj.avatar_url;
+  name.textContent = obj.name;
+  userName.textContent = obj.login;
+  location.textContent = `Location: ${obj.location}`;
+  profileLinkP.textContent = "Profile:";
+  profileLink.href = obj.html_url;
+  profileLink.textContent = obj.html_url;
+  followers.textContent = `Followers: ${obj.followers}`;
+  following.textContent = `Following: ${obj.following}`;
+  bio.textContent = `Bio: ${obj.bio}`;
+}
 
 /*
   List of LS Instructors Github username's:
