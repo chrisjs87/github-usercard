@@ -6,7 +6,7 @@ import axios from "axios";
     https://api.github.com/users/<your name>
 */
 
-axios.get("https://api.github.com/users/chrisjs87");
+// axios.get("https://api.github.com/users/chrisjs87");
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -21,7 +21,17 @@ axios.get("https://api.github.com/users/chrisjs87");
     and append the returned markup to the DOM as a child of .cards
 */
 
-axios.get("https://api.github.com/users/chrisjs87");
+const entryAppend = document.querySelector(".cards");
+axios
+  .get("https://api.github.com/users/chrisjs87")
+
+  .then((res) => {
+    const newCard = cardMaker(res.data);
+    entryAppend.appendChild(newCard);
+  })
+  .catch((err) => {
+    console.log("An error has been encountered", err);
+  });
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
